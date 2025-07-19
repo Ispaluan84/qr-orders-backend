@@ -1,8 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/test', (requ, set) => {
-    res.send('Pedido recibido');
-});
+const {
+    createOrder,
+    getOrdersByRestaurant,
+    updateOrderStatus
+} = require('../controllers/orderController')
+
+router.post('/', createOrder);
+
+router.get('/:restaurantId', getOrdersByRestaurant);
+
+router.put('/:orderId/status', updateOrderStatus);
+
+
 
 module.exports = router;

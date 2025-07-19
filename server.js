@@ -6,7 +6,7 @@ require('dotenv').config();
 const connectDB = require('./config/db');
 const restaurantRoutes = require('./routes/restaurantRoutes');
 const menuRoutes = require('./routes/menuRoutes');
-//const orderRoutes = require('./routes/orderRoutes')
+const orderRoutes = require('./routes/orderRoutes')
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -18,7 +18,7 @@ connectDB()
 
 app.use('/api/restaurants', restaurantRoutes);
 app.use('/api/menu', menuRoutes);
-//app.use('api/orders', orderRoutes);
+app.use('/api/orders', orderRoutes);
 
 app.get('/', (req, res) => {
     res.send('QR Orders API funcionando');
