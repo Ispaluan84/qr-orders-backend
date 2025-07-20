@@ -10,7 +10,7 @@ const {
 
 router.post('/', createMenuItem);
 
-router.get('/:restaurantId', getMenuItemsByRestaurant );
+router.get('/restaurant/:restaurantId', getMenuItemsByRestaurant );
 
 router.put('/:id', updateMenuItem);
 

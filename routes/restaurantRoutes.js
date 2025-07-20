@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { createRestaurant, getRestaurantBySlug} = require('../controllers/restaurantController');
+const { createRestaurant, getRestaurants, getRestaurantBySlug} = require('../controllers/restaurantController');
 
 
 router.post('/', createRestaurant);
+
+router.get('/', getRestaurants)
 
 router.get('/:slug', getRestaurantBySlug);
 
