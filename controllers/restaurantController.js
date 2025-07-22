@@ -47,3 +47,20 @@ exports.getRestaurantBySlug = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener restaurante'});
     }
 };
+
+exports.updateCategories = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { categories } = req.body;
+
+        const restaurant = await Restaurant.findByIdAndUpdate(
+            id,
+            { categories},
+            { new: true }   
+        );
+
+        res.json(restaurant);
+    } catch (err) {
+        res.status(500).json({ message: 'Error al actializar categorias' });
+    }
+};

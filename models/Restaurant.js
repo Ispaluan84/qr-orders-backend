@@ -7,6 +7,7 @@ const RestaurantSchema = new mongoose.Schema({
     contactPhone: String,
     slug: { type: String, unique: true, required: true},
     tables: { type: Number, default: 5 },
+    categories: { type: [String], default: [] },
     createdAt: { type: Date, default: Date.now }
 });
 
