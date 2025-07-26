@@ -22,7 +22,7 @@ exports.createMenuItem = async (req, res) => {
 
 exports.getMenuItemsByRestaurant = async (req, res) => {
   try {
-    console.log('rrestaurante ID recibido', req.params.restaurantId)
+    console.log('restaurante ID recibido', req.params.restaurantId)
     const { restaurantId } = req.params;
 
     const items = await MenuItem.find({ restaurant: restaurantId });
