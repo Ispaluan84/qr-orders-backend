@@ -31,5 +31,5 @@ app.get('/', (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`Servidor crriendo en puerto: http://localhost:${PORT} `)
+    console.log(`Servidor corriendo en puerto: http://localhost:${PORT} `)
 })
