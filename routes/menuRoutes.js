@@ -1,18 +1,16 @@
 const express = require('express')
 const router = express.Router();
 const protect = require('../middlewares/authMiddleware');
-
-
 const {
     createMenuItem,
-    getMenuItemsByRestaurant,
+    getMenuItems,
     updateMenuItem,
     toggleAvailability
 } = require('../controllers/menuController');
 
-router.post('/', protect, createMenuItem);
+router.get('/', getMenuItems );
 
-router.get('/restaurant/:restaurantId', getMenuItemsByRestaurant );
+router.post('/', protect, createMenuItem);
 
 router.put('/:id', protect, updateMenuItem);
 
