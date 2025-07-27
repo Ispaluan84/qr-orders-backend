@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
-const protect = require('../controllers/menuController');
+const protect = require('../middlewares/authMiddleware');
+
 
 const {
     createMenuItem,
