@@ -25,7 +25,8 @@ exports.register = async (req, res) => {
       token: generateToken(admin._id),
       admin: { 
         email: admin.email, 
-        restaurant: admin.restaurant }
+        restaurant: admin.restaurant.toString()
+      },
     });
   } catch (err) {
     console.error('Error en el registro:', err);
