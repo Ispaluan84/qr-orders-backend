@@ -1,14 +1,19 @@
 const Admin = require('../models/Admin');
 const jwt = require('jsonwebtoken');
 
-const generateTokken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '2D'});
+
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '2d' });
 };
 
-exports.registres = async (req, res) => {
-    const { email, password, restaurantId } = req.body;
-
-try {
+exports.register = async (req, res) => {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const admin = await Admin.create ({ 
+        email, 
+        passwordHash: hashedPassword, 
+        restaurant: restaurantId 
+    })
+  try {
     const exists = await Admin.findOne({ email });
     if (exists) return res.status(400).json({ message: 'Ya existe una cuenta con ese email' });
 

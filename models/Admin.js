@@ -7,15 +7,17 @@ const adminSchema = new mongoose.Schema({
     restaurant: { type: mongoose.Schema.Types.ObjectId, ref: 'Restaurant', required: true}
 });
 
+adminSchema.methods.matchPassword = function (password) {
+    return bcrypt.compare(password, this.passwordHash);
+};
+
 adminSchema.pre('save', async function (next) {
-    if(!this.isModified('password')) return next();
+    if(!this.isModified('passwordHash')) return next();
     const salt = await bcrypt.genSalt(10);
-    this.password =await bcrypt.hash(this.password, salt);
+    this.passwordHash = await bcrypt.hash(this.passwordHash, salt);
     next()
 });
 
-adminSchema.methods.matchPassword = function (enteredPassword) {
-    return bcrypt.compare(enteredPassword, this.password);
-};
+
 
 module.exports = mongoose.model('Admin', adminSchema);
