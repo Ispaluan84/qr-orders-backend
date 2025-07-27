@@ -23,7 +23,7 @@ connectDB()
 app.use('/api/restaurants', restaurantRoutes);
 app.use('/api/menu', menuRoutes);
 app.use('/api/orders', orderRoutes);
-app.use('/api/auth', authroutes)
+app.use('/api/auth', authRoutes)
 
 app.get('/', (req, res) => {
     res.send('QR Orders API funcionando');
