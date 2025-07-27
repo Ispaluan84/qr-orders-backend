@@ -8,7 +8,7 @@ const generateToken = (id) => {
 
 exports.register = async (req, res) => {
 
-    const { email, password, restaurant } = req.body;
+    const { email, password, restaurantId } = req.body;
   try {
     const exists = await Admin.findOne({ email });
     if (exists) return res.status(400).json({ message: 'Ya existe una cuenta con ese email' });
