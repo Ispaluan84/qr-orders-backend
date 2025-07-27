@@ -1,4 +1,4 @@
-const jwt = require ('jasonwebtoken');
+const jwt = require('jasonwebtoken');
 const Admin = require('../models/Admin');
 
 const protect = async (req, res, next) => {
