@@ -27,7 +27,7 @@ exports.register = async (req, res) => {
         restaurant: admin.restaurant }
     });
   } catch (err) {
-    console.error(err)
+    console.error('Error en el registro:', err);
     res.status(500).json({ message: 'Error en el registro' });
   }
 };
