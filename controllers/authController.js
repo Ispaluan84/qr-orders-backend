@@ -23,6 +23,7 @@ exports.register = async (req, res) => {
       admin: { email: admin.email, restaurant: admin.restaurant }
     });
   } catch (err) {
+    console.error(err)
     res.status(500).json({ message: 'Error en el registro' });
   }
 };
