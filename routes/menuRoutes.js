@@ -1,5 +1,7 @@
 const express = require('express')
 const router = express.Router();
+const protect = require('../controllers/menuController');
+const { createMenuItem } = require('../controllers/menuController'); 
 
 const {
     createMenuItem,
@@ -8,12 +10,12 @@ const {
     toggleAvailability
 } = require('../controllers/menuController');
 
-router.post('/', createMenuItem);
+router.post('/', protect, createMenuItem);
 
 router.get('/restaurant/:restaurantId', getMenuItemsByRestaurant );
 
-router.put('/:id', updateMenuItem);
+router.put('/:id', protect, updateMenuItem);
 
-router.patch('/:id/toggle', toggleAvailability);
+router.patch('/:id/toggle', protect, toggleAvailability);
 
 module.exports = router;

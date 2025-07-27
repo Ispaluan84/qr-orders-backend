@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const protect = require('../middlewares/authMiddleware');
 
 const {
     createOrder,
@@ -9,9 +10,9 @@ const {
 
 router.post('/', createOrder);
 
-router.get('/:restaurantId', getOrdersByRestaurant);
+router.get('/:restaurantId', protect, getOrdersByRestaurant);
 
-router.put('/:orderId/status', updateOrderStatus);
+router.put('/:orderId/status', protect, updateOrderStatus);
 
 
 
