@@ -38,3 +38,12 @@ exports.toggleAvailability = async (req, res) => {
     res.status(500).json({ message: 'Error al cambiar disponibilidad' });
   }
 };
+
+exports.deleteMenuItem = async (req, res) => {
+  try {
+    await MenuItem.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Plato eliminado' });
+  } catch (err) {
+    res.status(500).json({ message: 'Error al eliminar el plato' });
+  }
+};
