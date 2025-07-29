@@ -2,13 +2,14 @@ const Admin = require('../models/Admin');
 
 exports.getRestaurant = async (req, res) => {
   try {
-    const admin = await Admin.findById(req.user.id).populate('restaurant');
-    if (!admin || !admin.restaurant) {
-      return res.status(404).json({ message: 'Restaurante no encontrado' });
-    }
-    res.json(admin.restaurant);
+    const restaurant = {
+      name: "Mi Restaurante",
+      description: "Servicio digital de menú y pedidos"
+    };
+
+    res.json(restaurant);
   } catch (err) {
-    console.error('Error al obtener restaurante:', err);
-    res.status(500).json({ message: 'Error interno del servidor' });
+    console.error("Error al obtener restaurante:", err);
+    res.status(500).json({ message: "Error interno del servidor" });
   }
 };
