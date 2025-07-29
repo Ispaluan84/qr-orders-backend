@@ -2,8 +2,6 @@ const Admin = require('../models/Admin');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const RESTAURANT_ID = '687c9b1c001bec54e7b70367'
-
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '2d' });
 };
@@ -23,10 +21,7 @@ exports.register = async (req, res) => {
     });
     res.status(201).json({
       token: generateToken(admin._id),
-      admin: { 
-        email: admin.email, 
-        restaurant: admin.restaurant.toString()
-      },
+      admin: { email: admin.email },
     });
   } catch (err) {
     console.error('Error en el registro:', err);
@@ -45,9 +40,7 @@ exports.login = async (req, res) => {
 
     res.json({
       token: generateToken(admin._id),
-      admin: { 
-        email: admin.email, 
-        restaurant: admin.restaurant }
+      admin: { email: admin.email }
     });
   } catch (err) {
     res.status(500).json({ message: 'Error en el login' });

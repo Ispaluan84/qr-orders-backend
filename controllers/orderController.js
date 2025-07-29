@@ -3,7 +3,7 @@ const MenuItem = require('../models/MenuItem');
 
 exports.createOrder = async (req, res) => {
     try {
-        const { tableNumber, restaurant, items } = req.body;
+        const { tableNumber, items } = req.body;
 
         let totalPrice = 0
 
@@ -17,7 +17,6 @@ exports.createOrder = async (req, res) => {
 
         const order = new Order({
             tableNumber,
-            restaurant,
             items,
             totalPrice
         });
@@ -30,14 +29,13 @@ exports.createOrder = async (req, res) => {
     }
 };
 
-exports.getOrdersByRestaurant = async (req, res) => {
-    try {
-        const { restaurantId } = req.params;
-        const orders = await Order.find({ restaurant: restaurantId}).populate('items.menuItem');
-        res.json(orders)        
-    } catch (error) {
-        res.status(500).json({ message: 'Error al obtener pedidos'});
-    }
+exports.getAllOrders = async (req, res) => {
+  try {
+    const orders = await Order.find().populate('items.menuItem');
+    res.json(orders);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener pedidos' });
+  }
 };
 
 exports.updateOrderStatus = async (req, res) => {

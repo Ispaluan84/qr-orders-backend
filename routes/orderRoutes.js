@@ -4,13 +4,13 @@ const protect = require('../middlewares/authMiddleware');
 
 const {
     createOrder,
-    getOrdersByRestaurant,
+    getAllOrders,
     updateOrderStatus
 } = require('../controllers/orderController')
 
 router.post('/', createOrder);
 
-router.get('/:restaurantId', protect, getOrdersByRestaurant);
+router.get('/', protect, getAllOrders);
 
 router.put('/:orderId/status', protect, updateOrderStatus);
 
