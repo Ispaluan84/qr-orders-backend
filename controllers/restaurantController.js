@@ -1,4 +1,3 @@
-const Restaurant = require('../models/Restaurant');
 const Admin = require('../models/Admin');
 
 exports.getRestaurant = async (req, res) => {
