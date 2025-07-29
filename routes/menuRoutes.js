@@ -17,6 +17,6 @@ router.put('/:id', protect, updateMenuItem);
 
 router.patch('/:id/toggle', protect, toggleAvailability);
 
-router.delete('/:id', authenticate, deleteMenuItem)
+router.delete('/:id', protect, deleteMenuItem)
 
 module.exports = router;
